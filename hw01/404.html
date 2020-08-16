@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <title>Российские аванпосты 501-го и легиона Повстанцев | Russian outposts 501st and Rebel legion</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="keywords" content="501st russia, 501st.ru, 501st russian outpost, 501й Россия, 501й легион, 501й, штурмовик, штурмовик россия, штурмовики россия, stormtrooper, stormtroopers, stormtroopers russia, rebellegion russia, russian outpost, ruusan outpost, повстанцы россия, повстанцы, star wars косплей, star wars, звездные войны">
+        
+        <link rel="icon" type="image/ico" href="./img/ico/favicon.ico" />
+        
+        <!--bootstrap-->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+       
+        <!--Vue-->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+               
+        <!--moment.js-->
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.26.0/moment.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/moment@2.26.0/locale/ru.min.js"></script>
+    </head>
+    <body>
+        <div class='fluid' id="app">
+            
+        </div>
+        <script>
+            Vue.config.devtools = true;
+            const footer = Vue.component('footer-component', {
+                template: `<div class="w-100 mt-2">
+                                <p class="footer">The 501st Legion and Rebel Legion are worldwide Star Wars costuming organizations comprised of and operated by Star Wars fans. While not sponsored by Lucasfilm Ltd., they are Lucasfilm's preferred costuming groups. Star Wars, its characters, costumes, and all associated items are the intellectual property of Lucasfilm. © & ™ Lucasfilm Ltd. All rights reserved. Used under authorization.</p>
+                            </div>`
+            });
+            const error404 = {
+                template: `<div>
+                                <div class="d-flex">
+                                    <div class='w-50 d-flex flex-column m-auto'>
+                                        <p class='w-100 text-center h1'>404 ERROR</p>
+                                        <p class='w-100 text-center h1'>THIS IS NOT THE PAGE YOU'RE LOOKING FOR</p>
+                                        <a class='w-100 text-center h3' href="#">MOVE ALONG! MOVE ALONG!</a> 
+                                    </div>
+                                    <div class='w-50 d-flex'>
+                                        <img class='w-auto h-100 mx-auto' src="./404.png">
+                                    </div>
+                                </div>
+                                <footer-component></footer-component>
+                            </div>`
+            };
+
+            const routes = [
+                {
+                    path: '*',
+                    component: error404 
+                }
+            ];
+            const router = new VueRouter({
+                /*mode: 'history',*/
+                routes: routes,
+                scrollBehavior() {
+                    return {x: 0, y: 0}
+                }
+            });
+
+            var app = new Vue({
+                el: "#app",
+                router: router,
+                data: {
+                    navigation: [
+                        {
+                            name: 'Галерея',
+                            path: 'gallery'
+                        },
+                        {
+                            name: 'О нас',
+                            path: 'about'
+                        },
+                        {
+                            name: 'Контакты',
+                            path: 'contacts'
+                        }
+                    ]
+                } ,
+                computed: {
+                    menu_visible: function() {
+                        return window.innerWidth>992;
+                    },
+                    window_width: function() {
+                        window.innerWidth;   
+                    }
+                },
+                template: `<div class="fluid" id="app">
+                                <nav class="navbar sticky-top navbar-light bg-light">
+                                    <nav class="container d-flex flex-row justify-content-start">
+                                        <router-link to="/" exact tag="nav" class="navbar-brand cursor-pointer">
+                                            <img src="./img/ico/favicon-32x32.png" width="30" height="30" alt="">
+                                            <span class="m-1">501st.ru</span>
+                                        </router-link>
+                                        <button id="menu_collapsed" class="navbar-toggler" :class="{'d-none': menu_visible, 'd-flex': !menu_visible}" >
+                                        <span class="navbar-toggler-icon"></span>
+                                        </button>
+                                        <nav id="menu" class="d-flex flex-direction-row ">
+                                            <nav v-for="nav_item in navigation" class="m-1 p-1 nav-item" :class="{'d-none': !menu_visible, 'd-flex': menu_visible}">  
+                                                <router-link :to="{ name: nav_item.path }" v-text="nav_item.name" tag="nav" class="cursor-pointer"></router-link>
+                                            </nav>
+                                        </nav>
+                                    </nav>
+                                </nav>
+                                <div class="container bg-light">
+                                    
+                                    <router-view></router-view>
+                                </div> 
+                            </div>`
+                //component: {'slider-component'}  
+            });
+        </script>
+        
+    </body>
+</html>

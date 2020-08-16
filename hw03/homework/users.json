@@ -1,0 +1,17 @@
+[
+    {
+        "login": "Admin",
+        "name": "Администратор",
+        "id": 0
+    },
+    {
+        "login": "Fyranth",
+        "name": "Глеб",
+        "id": 1
+    },
+    {
+        "login": "Bradnepitt",
+        "name": "Александра",
+        "id": 2
+    }
+]

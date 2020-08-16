@@ -1,0 +1,42 @@
+[
+    {
+        "name": "product1",
+        "count": 10,
+        "price": 100
+    },
+    {
+        "name": "product2",
+        "count": 20,
+        "price": 200
+    },
+    {
+        "name": "product3",
+        "count": 30,
+        "price": 300
+    },
+    {
+        "name": "product4",
+        "count": 30,
+        "price": 300
+    },
+    {
+        "name": "product5",
+        "count": 30,
+        "price": 300
+    },
+    {
+        "name": "product6",
+        "count": 30,
+        "price": 300
+    },
+    {
+        "name": "product7",
+        "count": 30,
+        "price": 300
+    },
+    {
+        "name": "product8",
+        "count": 30,
+        "price": 300
+    }
+]
