@@ -29,7 +29,8 @@ let mimeTypes = {
     '.html': 'text/html', 
     '.css': 'text/css',  
     '.jpg': 'image/jpeg',  
-    '.gif': 'image/gif' 
+    '.gif': 'image/gif',
+    '.ico': 'image/x-icon' 
 };
 
 /*http.createServer((request, response) => {
@@ -63,12 +64,14 @@ http.createServer((request, response) => {
     console.log("Request: " + request.url);
     if (request.url === '/') {
         pathname = 'public/index.html'; 
-    }else {
+    } else if (request.url === '/favicon.ico') {
+        pathname = 'public/img/favicon.ico'
+    } else {
         pathname = 'public' + request.url;  
     } 
     extname = path.extname(pathname);
     mimeType = mimeTypes[extname];   
-    if (extname === ".jpg" || extname === ".gif") {
+    if (extname === ".jpg" || extname === ".gif" || extname === ".ico") {
         try {
             console.log(mimeType);
             let img = fs.readFileSync(pathname);

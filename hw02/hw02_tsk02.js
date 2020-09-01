@@ -26,14 +26,14 @@ for(let i=0; i<arr.length; i++) {
     str2 += `${Math.pow(arr[i], 3)} `;
 }
 
-fs.writeFile('./out-1.txt', str1, (err)=> {
+fs.writeFile('./out-1.txt', str1.trim(), (err)=> {
     if(err) {
         console.log(`out-1.txt ${err}`);
     } else {
     console.log(`out-1.txt записан`);
     }
 });
-fs.writeFile('./out-2.txt', str2, (err)=> {
+fs.writeFile('./out-2.txt', str2.trim(), (err)=> {
     if(err) {
         console.log(`out-2.txt ${err}`);
     } else {

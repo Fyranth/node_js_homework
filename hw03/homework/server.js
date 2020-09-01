@@ -124,20 +124,6 @@ http.createServer((request, response) => {
             }   
         });
     }
-    if(pathData.pathname=='/users') {
-        fs.readFile('./users.json','utf8', (err, data) => {
-            response.statusCode = 200;
-            if(err) {
-                response.write(err404);
-                response.end();
-                return;    
-            } else {
-                response.write(renderUsersData(data));
-                response.end();
-                return; 
-            }   
-        });
-    }
     
     if(pathData.pathname=='/nameconvert') {
         fs.readFile('./nameconvert.html','utf8', (err, data) => {
